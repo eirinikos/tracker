@@ -1,0 +1,62 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "tasks",
+  "apis": [
+    {
+      "path": "/v1/projects/{project_id}/tasks.json",
+      "operations": [
+        {
+          "summary": "List all tasks",
+          "notes": "This lists all the active tasks for a given project",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "page number of results, default 1",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "page_size",
+              "type": "integer",
+              "description": "number of results per page, default 25",
+              "required": false
+            }
+          ],
+          "nickname": "V1::Tasks#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/v1/projects/{project_id}/tasks.json",
+      "operations": [
+        {
+          "summary": "Creates a new Task",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Task designation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Task description",
+              "required": false
+            }
+          ],
+          "nickname": "V1::Tasks#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}
