@@ -1,9 +1,9 @@
 class CreateTasks < ActiveRecord::Migration
   def change
-    create_table :tasks do |t|
+    create_table :tasks, id: :uuid do |t|
       t.string :name
       t.string :description
-      t.string :state
+      t.integer :state
       t.uuid :project_id, index: true, foreign_key: true
 
       t.timestamps null: false

@@ -2,10 +2,10 @@
 #
 # Table name: tasks
 #
-#  id          :integer          not null, primary key
+#  id          :uuid             not null, primary key
 #  name        :string
 #  description :string
-#  state       :string
+#  state       :integer
 #  project_id  :uuid
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -18,12 +18,18 @@
 class Task < ActiveRecord::Base
   belongs_to :project
 
-  validates :project_id, presence: :true
+  # validates :project, presence: :true
   validates :name, presence: :true
   validates :description, presence: :true
-  validates :state, inclusion: { in: %w(to-do in-progress done) }
+  validates :state, presence: :true
 
   after_initialize :set_default_state
+
+  enum state: {
+    to_do: -1,
+    in_progress: 10,
+    done: 20
+  }
 
   def project_name
     project.name
@@ -32,6 +38,6 @@ class Task < ActiveRecord::Base
   private
 
   def set_default_state
-    self.state ||= 'to-do'
+    self.state ||= -1
   end
 end

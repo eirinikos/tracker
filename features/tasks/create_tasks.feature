@@ -3,7 +3,7 @@ Feature: Creating tasks
 
   Rules:
   - Name and description are required
-  - Created tasks should default to "to-do" state
+  - Created tasks should default to "to_do" state
 
   Scenario: Creating a task with all fields
     When I create a task with:
@@ -12,7 +12,7 @@ Feature: Creating tasks
       |	PROJECT_ID  | d2a5b32b-e795-4a95-9698-0b851f0d56b4    |
     Then the system has the tasks:
       | NAME           | STATE  |
-      | Sample Task    | to-do  |
+      | Sample Task    | to_do  |
 
   Scenario: Trying to create a task without a name
     When I try to create a task with:
