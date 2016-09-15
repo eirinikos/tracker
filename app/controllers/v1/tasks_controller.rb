@@ -18,7 +18,7 @@ module V1
       param :path, :id, :string, :required, 'Project ID'
     end
     def show
-      task = Task.find(params[:id])
+      task = Task.find_by(id: params[:id])
       if task.present?
         render json: task
       else
