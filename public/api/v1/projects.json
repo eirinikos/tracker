@@ -1,0 +1,133 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "projects",
+  "apis": [
+    {
+      "path": "/v1/projects.json",
+      "operations": [
+        {
+          "summary": "List all projects",
+          "notes": "This lists all the active projects",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "page",
+              "type": "integer",
+              "description": "page number of results, default 1",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "page_size",
+              "type": "integer",
+              "description": "number of results per page, default 25",
+              "required": false
+            }
+          ],
+          "nickname": "V1::Projects#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/v1/projects.json",
+      "operations": [
+        {
+          "summary": "Creates a new Project",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Project designation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Project description",
+              "required": false
+            }
+          ],
+          "nickname": "V1::Projects#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/v1/projects/{id}.json",
+      "operations": [
+        {
+          "summary": "Fetch a single Project",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "User Id",
+              "required": true
+            }
+          ],
+          "nickname": "V1::Projects#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/v1/projects/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing Project",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Project Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Project designation",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Project description",
+              "required": false
+            }
+          ],
+          "nickname": "V1::Projects#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/v1/projects/{id}.json",
+      "operations": [
+        {
+          "summary": "Deletes an existing Project",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Project Id",
+              "required": true
+            }
+          ],
+          "nickname": "V1::Projects#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

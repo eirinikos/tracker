@@ -29,4 +29,13 @@ class ApiWorldDriver < WorldDriver
     end
   end
 
+  def create_task attributes
+    project_id = attributes[:project_id]
+    result = post 'v1/tasks', { project_id: project_id, task: attributes }
+    body = JSON.parse(result.body).deep_symbolize_keys
+    if body[:errors].present?
+      @errors.push *body[:errors]
+    end
+  end
+
 end

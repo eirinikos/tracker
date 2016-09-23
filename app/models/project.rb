@@ -15,6 +15,8 @@
 #
 
 class Project < ActiveRecord::Base
+  has_many :tasks
+
   validates :name, presence: true, uniqueness: true
   validates :state, presence: true
 
@@ -25,6 +27,10 @@ class Project < ActiveRecord::Base
     active: 10,
     archived: 20
   }
+
+  def task_names
+    tasks.map(&:name)
+  end
 
   private
 
